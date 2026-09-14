@@ -2,8 +2,15 @@ name: Cek Lokasi Motor Terbaru
 
 on:
   schedule:
-    # Jalankan di menit ke-5 setiap jam (UTC).
-    # Beri buffer 5 menit dari jadwal ESP32 kirim data di menit ke-0.
+    # Cek berkali-kali dalam window menit 59 (jam sebelumnya) dan 0-5 (jam berikutnya),
+    # memberi banyak kesempatan menangkap data ESP32 yang mungkin terlambat kirim.
+    # Semua waktu dalam UTC.
+    - cron: '59 * * * *'
+    - cron: '0 * * * *'
+    - cron: '1 * * * *'
+    - cron: '2 * * * *'
+    - cron: '3 * * * *'
+    - cron: '4 * * * *'
     - cron: '5 * * * *'
   workflow_dispatch: # supaya bisa di-trigger manual dari tab Actions di GitHub, untuk testing
 
