@@ -20,6 +20,7 @@ const TOPIC_LOCATION = 'tracker/motor1/location';
 
 const ONESIGNAL_APP_ID = process.env.ONESIGNAL_APP_ID;
 const ONESIGNAL_API_KEY = process.env.ONESIGNAL_API_KEY;
+const ONESIGNAL_SUBSCRIPTION_ID = process.env.ONESIGNAL_SUBSCRIPTION_ID;
 
 const STATE_FILE = './state.json';
 
@@ -116,7 +117,7 @@ async function kirimNotifikasi(data) {
     },
     body: JSON.stringify({
       app_id: ONESIGNAL_APP_ID,
-      included_segments: ['Subscribed Users'],
+      include_subscription_ids: [ONESIGNAL_SUBSCRIPTION_ID],
       headings: { en: 'Lokasi Motor Diperbarui' },
       contents: { en: 'Update lokasi terbaru diterima.' },
     }),
