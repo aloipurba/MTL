@@ -12,6 +12,7 @@ on:
     - cron: '3 * * * *'
     - cron: '4 * * * *'
     - cron: '5 * * * *'
+    - cron: '37 * * * *'
   workflow_dispatch: # supaya bisa di-trigger manual dari tab Actions di GitHub, untuk testing
 
 jobs:
