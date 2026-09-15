@@ -20,7 +20,7 @@ const TOPIC_LOCATION = 'tracker/motor1/location';
 
 const ONESIGNAL_APP_ID = process.env.ONESIGNAL_APP_ID;
 const ONESIGNAL_API_KEY = process.env.ONESIGNAL_API_KEY;
-const ONESIGNAL_SUBSCRIPTION_ID = process.env.ONESIGNAL_SUBSCRIPTION_ID;
+const ONESIGNAL_EXTERNAL_ID = 'motor1_owner'; // harus SAMA PERSIS dengan yang di-set via OneSignal.login() di Flutter
 
 const STATE_FILE = './state.json';
 
@@ -117,7 +117,8 @@ async function kirimNotifikasi(data) {
     },
     body: JSON.stringify({
       app_id: ONESIGNAL_APP_ID,
-      include_subscription_ids: [ONESIGNAL_SUBSCRIPTION_ID],
+      include_aliases: { external_id: [ONESIGNAL_EXTERNAL_ID] },
+      target_channel: 'push',
       headings: { en: 'Lokasi Motor Diperbarui' },
       contents: { en: 'Update lokasi terbaru diterima.' },
     }),
